@@ -118,12 +118,12 @@ while True:
                 },
                 "time": json_result[0]["timestamp"],
                 "fields": {
-                    "bytes_sent": json_result[0]["bytes_sent"],
-                    "bytes_received": json_result[0]["bytes_received"],
-                    "ping": float(json_result[0]["ping"]),
-                    "jitter": float(json_result[0]["jitter"]),
-                    "upload": float(json_result[0]["upload"]),
-                    "download": float(json_result[0]["download"]),
+                    "bytes_sent": json_result[0]["server"]["bytes_sent"],
+                    "bytes_received": json_result[0]["server"]["bytes_received"],
+                    "ping": float(json_result[0]["server"]["ping"]),
+                    "jitter": float(json_result[0]["server"]["jitter"]),
+                    "upload": float(json_result[0]["server"]["upload"]),
+                    "download": float(json_result[0]["server"]["download"]),
                 },
             }
         ]
