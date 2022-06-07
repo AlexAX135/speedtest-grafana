@@ -91,6 +91,7 @@ while True:
     else:
         # Speedtest succeeded
         logger.debug(f"Speedtest succeeded. Parsing JSON results.")
+        logger.debug(f"Result: {result.stdout}")
         # Parse JSON results
         try:
             json_result = json.loads(result.stdout)
