@@ -91,7 +91,7 @@ while True:
     else:
         # Speedtest succeeded
         logger.debug(f"Speedtest succeeded. Parsing JSON results.")
-        logger.debug(f"Result: {result.stdout}")
+        
         # Parse JSON results
         try:
             json_result = json.loads(result.stdout)
@@ -101,6 +101,8 @@ while True:
             # Sleep on the specified interval
             time.sleep(SPEEDTEST_INTERVAL)
             continue
+            
+            logger.debug(f"Result: {json_result}")
         # Create InfluxDB JSON body
         json_body = [
             {
