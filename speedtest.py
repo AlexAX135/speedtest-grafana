@@ -101,8 +101,6 @@ while True:
             # Sleep on the specified interval
             time.sleep(SPEEDTEST_INTERVAL)
             continue
-            
-            logger.debug(f"Result: {json_result}")
         # Create InfluxDB JSON body
         json_body = [
             {
