@@ -108,7 +108,7 @@ while True:
             {
                 "measurement": "internet_speed",
                 "tags": {
-                    "server_name": json_result["server"]["name"],
+                    "server_name": json_result[0]["server"]["name"],
                     "server_url": json_result["server"]["url"],
                     "ip": json_result["client"]["ip"],
                     "hostname": json_result["client"]["hostname"],
