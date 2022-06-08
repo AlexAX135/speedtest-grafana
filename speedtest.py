@@ -72,19 +72,7 @@ except (requests.exceptions.ConnectionError, requests.exceptions.ReadTimeout, In
     logger.debug(f"Connection failed.\nError: {err}")
 
 logger.debug(f"--->")
-                
 
-list = influx.get_list_database()
-logger.debug(list)
-
-
-dummy_points = [
-   {"measurement": "cpu_usage", "tags": {"unit": "percent"}, "time": "2009-11-10T23:00:00Z", "fields": {"value": 12.34}},
-   {"measurement": "network", "tags": {"direction": "in"}, "time": "2009-11-10T23:00:00Z", "fields": {"value": 123.00}},
-   {"measurement": "network", "tags": {"direction": "out"}, "time": "2009-11-10T23:00:00Z", "fields": {"value": 12.00}}
-]
-    
-influx.write_points(points=dummy_points, database='lepansard', tags={"host": "server01", "region": "us-west"}, batch_size=2)
 
 # Run the speedtest using the librespeed/speedtest-cli on an interval
 while True:
