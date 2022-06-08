@@ -68,7 +68,8 @@ try:
     )
 except (requests.exceptions.ConnectionError, requests.exceptions.ReadTimeout, InfluxDBClientError, InfluxDBServerError) as err:
     logger.debug(f"Connection failed.\nError: {err}")
-    continue
+
+logger.debug(f"--->")
                 
 
 list = influx.get_list_database()
