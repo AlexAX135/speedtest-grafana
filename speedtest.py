@@ -133,9 +133,8 @@ while True:
         )
         try:
             influx.write_points(json_body)
-        except
-            logger.debug(f"Failed to update InfluxDB.\nError: {err}")
-            continue
+        except (RequestException, InfluxDBClientError, InfluxDBServerError):
+            logger.exception('Failed to send metrics to influxdb') 
         
     logger.debug(f"Sleeping for {SPEEDTEST_INTERVAL} seconds.")
     # Sleep on the specified interval
