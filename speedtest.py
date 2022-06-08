@@ -132,10 +132,10 @@ while True:
             f"Writing results to InfluxDB database: {INFLUXDB_DB}.\nResults: {json_body}"
         )
         try:
-        influx.write_points(json_body)
+            influx.write_points(json_body)
         except
-        logger.debug(f"Failed to update InfluxDB.\nError: {err}")
-        continue
+            logger.debug(f"Failed to update InfluxDB.\nError: {err}")
+            continue
         
     logger.debug(f"Sleeping for {SPEEDTEST_INTERVAL} seconds.")
     # Sleep on the specified interval
