@@ -55,14 +55,20 @@ if not SPEEDTEST_SERVER_ID:
 logger.debug(
     f"Connecting to InfluxDB using host: {INFLUXDB_HOST}, port: {INFLUXDB_PORT}, username: {INFLUXDB_USER}, database name: {INFLUXDB_DB}."
 )
-influx = influxdb.InfluxDBClient(
+
+
+try:
+    influx = influxdb.InfluxDBClient(
     host=INFLUXDB_HOST,
     port=INFLUXDB_PORT,
     username=INFLUXDB_USER,
     password=INFLUXDB_USER_PASSWORD,
     database=INFLUXDB_DB,
     retries=0,
-)
+    )
+except (requests.exceptions.ConnectionError, requests.exceptions.ReadTimeout, InfluxDBClientError, InfluxDBServerError) as err:
+    logger.debug(f"Connection failed.\nError: {err}")
+                
 
 list = influx.get_list_database()
 logger.debug(list)
