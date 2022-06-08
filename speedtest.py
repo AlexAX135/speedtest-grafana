@@ -64,6 +64,9 @@ influx = influxdb.InfluxDBClient(
     retries=0,
 )
 
+list = influx.get_list_database()
+logger.debug(list)
+
 # Run the speedtest using the librespeed/speedtest-cli on an interval
 while True:
     logger.debug(
