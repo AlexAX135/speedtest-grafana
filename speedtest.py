@@ -138,7 +138,7 @@ while True:
                     "org": json_result[0]["client"]["org"],
                     "timezone": json_result[0]["client"]["timezone"],
                 },
-                "time": json_result[0]["timestamp"],
+                "time": datetime.isoformat(),
                 "fields": {
                     "bytes_sent": json_result[0]["bytes_sent"],
                     "bytes_received": json_result[0]["bytes_received"],
