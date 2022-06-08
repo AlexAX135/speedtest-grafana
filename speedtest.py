@@ -42,6 +42,21 @@ INFLUXDB_USER = os.environ.get("INFLUXDB_USER", "root")
 INFLUXDB_USER_PASSWORD = os.environ.get("INFLUXDB_USER_PASSWORD", "root")
 INFLUXDB_DB = os.environ.get("INFLUXDB_DB", "internet_speed")
 
+        dummy_points = [
+            {"measurement": "cpu_usage", "tags": {"unit": "percent"},
+             "time": "2009-11-10T23:00:00Z", "fields": {"value": 12.34}},
+            {"measurement": "network", "tags": {"direction": "in"},
+             "time": "2009-11-10T23:00:00Z", "fields": {"value": 123.00}},
+            {"measurement": "network", "tags": {"direction": "out"},
+             "time": "2009-11-10T23:00:00Z", "fields": {"value": 12.00}}
+        ]
+    
+ influx.write_points(points=dummy_points,
+                             database='lepansard',
+                             tags={"host": "server01",
+                                   "region": "us-west"},
+                             batch_size=2)
+
 # Check if SPEEDTEST_SERVER_ID environment variable has not been provided
 if not SPEEDTEST_SERVER_ID:
     logger.debug(
