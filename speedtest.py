@@ -128,9 +128,7 @@ while True:
             }
         ]
         # Write results to InfluxDB
-        logger.debug(
-            f"Writing results to InfluxDB database: {INFLUXDB_DB}.\nResults: {json_body}"
-        )
+        logger.debug(f"Writing results to InfluxDB database: {INFLUXDB_DB}.\nResults: {json_body}")
         try:
             influx.write_points(json_body)
         except (RequestException, InfluxDBClientError, InfluxDBServerError):
